@@ -1,0 +1,423 @@
+﻿<!-- CS1300 Development project
+      by Foster Hoff !-->
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <title>3D Cubes</title>
+    <style>
+        @import url('http://fonts.googleapis.com/css?family=Open+Sans');
+        body {
+            font-family: "Open Sans", Arial, sans-serif;
+            font-size: 16px;
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js" type="text/javascript"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js" type="text/javascript"></script>
+
+    <div align="center" style="direction: ltr;">
+
+        <div style="text-align:center;padding:10px;">
+        </div>
+        <div class="wrap">
+        <h2>3D Loading Cube</h2>
+            <div class="cube">
+                <div class="front progress">&nbsp;
+                    Loading... X% Complete
+                </div>
+                <div class="back progress">&nbsp;
+                    Loading... X% Complete
+                </div>
+                <div class="left progress">&nbsp;
+                    Loading... X% Complete
+                </div>
+                <div class="right progress">&nbsp;
+                    Loading... X% Complete
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:50px;margin-bottom:30px;">
+                <button onclick="setPercent();return false;">Reset</button>
+            </div>
+        </div>
+
+        <div class="wrap">
+        <h2>3D News Cube</h2>
+            <div class="cube">
+                <div class="f floater">&nbsp;
+                <a href="#" class="fill-div"></a>
+                </div>
+                <div class="b floater">&nbsp;
+                <a href="##" class="fill-div"></a>
+                </div>
+                <div class="l floater">&nbsp;
+                <a href="###" class="fill-div"></a>
+                </div>
+                <div class="r floater">&nbsp;
+                <a href="####" class="fill-div"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrap">
+        <h2>3D Advertising Cube</h2>
+            <div class="cube">
+                <div class="f2 floater">
+                <a href="#" class="fill-div"></a>
+                </div>
+                <div class="b2 floater">
+                <a href="##" class="fill-div"></a>
+                </div>
+                <div class="l2 floater">
+                <a href="###" class="fill-div"></a>
+                </div>
+                <div class="r2 floater">
+                <a href="####" class="fill-div"></a>
+                </div>
+            </div>
+        </div>
+
+
+        <style>
+            body {
+                background-color: #eee;
+            }
+
+            .wrap {
+                float:left;
+                margin-top: 50px;
+                margin-left: 330px;
+                perspective: 1000px;
+                perspective-origin: 50% 50%;
+            }
+
+            h2 {
+                margin-bottom: 30px;
+            }
+
+            @keyframes bganim {
+                from {
+                    background-position: 0px;
+                }
+
+                to {
+                    background-position: 80px;
+                }
+            }
+
+            .cube {
+                margin: auto;
+                position: relative;
+                height: 200px;
+                width: 200px;
+                transform-style: preserve-3d;
+            }
+
+                .cube div {
+                    position: absolute;
+                    padding: 0px;
+                    box-sizing: border-box;
+                    height: 100%;
+                    width: 100%;
+                    opacity: 0.9;
+                    background-color: #000;
+                    border: solid 1px #eee;
+                    color: #fff;
+                    font: 10px arial;
+                    transition: transform 0.2s ease-in;
+                }
+
+            .progress {
+            height: 100%;
+            width: 0%;
+            padding: 0px;
+            transition: height 2s ease;
+            overflow: visible;
+            text-align: center;
+            color: #000;
+            font-family: verdana;
+            font-size: 20px;
+            white-space: nowrap;
+            line-height: 45px;
+            text-shadow: 1px 1px 2px #fff;
+            border-right: solid 2px #444;
+            background-size: 50px 50px;
+            /* Blue stripes */
+            background-image: linear-gradient(135deg,#CC0000 100%, #CC0033 100%);    
+            animation: bganim 1s linear 2s infinite;
+            }
+
+            .front {
+                transform: translateZ(100px);
+            }
+
+            .back {
+                transform: translateZ(-100px) rotateY(180deg);
+            }
+
+            .right {
+                transform: rotateY(-270deg) translateX(100px);
+                transform-origin: top right;
+            }
+
+            .left {
+                transform: rotateY(270deg) translateX(-100px);
+                transform-origin: center left;
+            }
+
+            .top {
+                transform: rotateX(-270deg) translateY(-100px);
+                transform-origin: top center;
+            }
+
+            .bottom {
+                transform: rotateX(270deg) translateY(100px);
+                transform-origin: bottom center;
+
+            }
+
+            @keyframes rotate {
+                from {
+                    transform: rotateY(0deg);
+                }
+
+                to {
+                    transform: rotateY(360deg);
+                }
+            }
+
+            .cube {
+                animation: rotate 20s infinite linear;
+            }
+
+
+
+
+
+            .floater {
+            height: 100%;
+            width: 0%;
+            padding: 0px;
+            transition: height 2s ease;
+            overflow: visible;
+            text-align: center;
+            color: #000;
+            font-family: verdana;
+            font-size: 20px;
+            white-space: nowrap;
+            line-height: 45px;
+            text-shadow: 1px 1px 2px #fff;
+            border-right: solid 2px #444;
+            /* Blue stripes */   
+            background-image: url("4.jpg")
+            animation: bganim 1s linear 2s infinite;
+            }
+
+            .f {
+                transform: translateZ(100px);
+                background-image: url("3.jpg")
+            }
+
+            .b {
+                transform: translateZ(-100px) rotateY(180deg);
+                background-image: url("2.jpg")
+            }
+
+            .r {
+                transform: rotateY(-270deg) translateX(100px);
+                transform-origin: top right;
+                background-image: url("4.jpg")
+            }
+
+            .l {
+                transform: rotateY(270deg) translateX(-100px);
+                transform-origin: center left;
+                background-image: url("1.jpg")
+            }
+
+            .f2 {
+                transform: translateZ(100px);
+                background-image: url("5.jpg")
+            }
+
+            .b2 {
+                transform: translateZ(-100px) rotateY(180deg);
+                background-image: url("8.jpg")
+            }
+
+            .r2 {
+                transform: rotateY(-270deg) translateX(100px);
+                transform-origin: top right;
+                background-image: url("6.jpg")
+            }
+
+            .l2 {
+                transform: rotateY(270deg) translateX(-100px);
+                transform-origin: center left;
+                background-image: url("7.jpg")
+            }
+            a.fill-div {
+                display: block;
+                height: 100%;
+                idth: 100%;
+                text-decoration: none;
+            }
+
+
+            .wrap:hover .f {
+                transform: translateZ(200px);
+            }
+
+            .wrap:hover .b {
+                transform: translateZ(-200px) rotateY(180deg);
+            }
+
+            .wrap:hover .r {
+                transform: rotateY(-270deg) translateZ(100px) translateX(100px);
+            }
+
+            .wrap:hover .l {
+                transform: rotateY(270deg) translateZ(100px) translateX(-100px);
+            }
+
+        </style>
+    </div>
+    <script type="text/javascript">
+        var tOut;
+        var ff = 0
+        var y = document.getElementsByClassName('progress')
+        function scalingLoad() {
+            ff = ff + 1;
+            if (ff > 3){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FF0000 100%, #FF0033 100%)');
+            }
+            if (ff > 4){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FF1100 100%, #FF1133 100%)');
+            }
+            if (ff > 5){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FF2200 100%, #FF2233 100%)');
+            }
+            if (ff > 6){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FF3300 100%, #FF3333 100%)');
+            }
+            if (ff > 7){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FF4400 100%, #FF4433 100%)');
+            }
+            if (ff > 8){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FF5500 100%, #FF5533 100%)');
+            }
+            if (ff > 9){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FF6600 100%, #FF6633 100%)');
+            }
+            if (ff > 10){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FF7700 100%, #FF7733 100%)');
+            }
+            if (ff > 11){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FF8800 100%, #FF8833 100%)');
+            }
+            if (ff > 15){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FF9900 100%, #FF9933 100%)');
+            }
+            if (ff > 19){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FFAA00 100%, #FFAA33 100%)');
+            }
+            if (ff > 23){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FFBB00 100%, #FFBB33 100%)');
+            }
+            if (ff > 27){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FFCC00 100%, #FFCC33 100%)');
+            }
+            if (ff > 31){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FFDD00 100%, #FFDD33 100%)');
+            }
+            if (ff > 35){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FFEE00 100%, #FFEE33 100%)');
+            }
+            if (ff > 39){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#FFFF00 100%, #FFFF33 100%)');
+            }
+            if (ff > 43){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#EEFF00 100%, #EEFF33 100%)');
+            }
+            if (ff > 47){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#DDFF00 100%, #DDFF33 100%)');
+            }
+            if (ff > 51){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#CCFF00 100%, #CCFF33 100%)');
+            }
+            if (ff > 55){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#BBFF00 100%, #BBFF33 100%)');
+            }
+            if (ff > 59){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#AAFF00 100%, #AAFF33 100%)');
+            }
+            if (ff > 63){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#99FF00 100%, #99FF00 100%)');
+            }
+            if (ff > 67){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#88FF00 100%, #88FF00 100%)');
+            }
+            if (ff > 71){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#77FF00 100%, #77FF00 100%)');
+            }
+            if (ff > 75){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#66FF00 100%, #66FF33 100%)');
+            }
+            if (ff > 79){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#55FF00 100%, #55FF33 100%)');
+            }
+            if (ff > 83){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#44FF00 100%, #44FF00 100%)');
+            }
+            if (ff > 87){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#33FF00 100%, #33FF00 100%)');
+            }
+            if (ff > 91){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#22FF00 100%, #22FF00 100%)');
+            }
+            if (ff > 95){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#11FF00 100%, #11FF00 100%)');
+            }
+            if (ff > 99){
+                $('.progress').css('backgroundImage','linear-gradient(135deg,#00FF00 100%, #00FF00 100%)');
+            }
+
+
+
+            if (ff > 100){
+                ff=100;
+            }
+            $('.progress').css({ height: ff + "%" });
+            $("#moveTo").val(ff);
+            y[0].innerHTML = "Loading... " + ff + " % Complete";
+            y[0].style.fontSize="medium";
+            y[0].style.color="black";
+            y[1].innerHTML = "Loading... " + ff + " % Complete";
+            y[1].style.fontSize="medium";
+            y[1].style.color="black";
+            y[2].innerHTML = "Loading... " + ff + " % Complete";
+            y[2].style.fontSize="medium";
+            y[2].style.color="black";
+            y[3].innerHTML = "Loading... " + ff + " % Complete";
+            y[3].style.fontSize="medium";
+            y[3].style.color="black";
+            tOut = setTimeout("scalingLoad()", 25);
+        }
+
+        function setPercent() {
+            ff=0
+            clearTimeout(tOut);
+            scalingLoad();
+        }
+        $(window).load(function () {
+            setPercent();
+        });
+    </script>
+</body>
+</html>
